@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style type="text/css">
+		body {
+			background-color: black;
+			padding: 0;
+			margin: 0;
+		}
+
+		.text {
+			color: white;
+		}
+
+		#mal {
+			width: 300px;
+			height: 50px;
+			text-align: center;
+			;
+			font-size: 20px;
+			border-width: 3px 3px 3px 3px;
+			background-color: white;
+			color: color;
+			transition: 1s;
+		}
+
+		#mal:focus {
+			background-color: black;
+			color: white;
+		}
+
+		.s {
+			position: relative;
+			;
+			left: 400px;
+		}
+
+		#btn {
+			width: 150px;
+			height: 50px;
+			background-color: black;
+			border-radius: 10px;
+			position: relative;
+
+			left: 200px;
+		}
+
+		#btn>a {
+			outline: none;
+			;
+			color: white;
+			text-decoration: none;
+
+		}
+
+		.top {
+			color: white;
+		}
+
+		ul {
+			list-style-type: decimal;
+			display: block;
+		}
+
+		/* #list {
+			position: absolute;
+			margin-right: 10px;
+			margin-left: 0;
+		}
+
+		#listno {
+			position: absolute;
+			margin-left: 200px;
+		} */
+		.mal{
+			box-shadow: 12px 12px 12px black;
+			border-radius: 15px;
+			border-width: 2px 12px 12px 2px;
+			float: left;
+			margin: 0 20px 0 20px;
+			width: 400px;
+			height: 2000px;
+			background-color: black;
+			border: 3px solid green;
+		}
+		.mal>h3{
+			font-size: 25px;
+			color: white;
+			text-align: center;
+
+		}
+		.nomal{
+			box-shadow: 12px 12px 12px black;
+			border-radius: 15px;
+			border-width: 2px 12px 12px 2px;
+			float: right;
+			margin: 0 20px 0 20px;
+			width: 400px;
+			height: 2000px;
+			background-color: black;
+			border: 3px solid green;
+		}
+		.nomal>h3{
+			font-size: 25px;
+			color: white;
+			text-align: center;
+
+		}
+
+		.listItem {
+			color: white;
+			font-size: 25px;
+
+		}
+
+		#history {
+			display: none;
+		}
+	</style>
+	<meta charset="utf-8">
+	<title>as</title>
+</head>
+
+<body>
+	<div class="s">
+		<h1 class="text">Ваше имя:</h1>
+		<input id="mal" type="text" name="mal" placeholder="Введите свое имя">
+		<h1 id="res"></h1>
+
+	</div>
+	<button id="btn"><a href="">история малов</a></button>
+
+	<div id="history">
+		<center><h1 class="top">список проверок</h1></center>
+		<div class="nomal">
+			<h3>все не малы</h3>
+		<ul id="listno">
+		
+
+		</ul>
+	</div>
+	<div class="mal">
+		<h3>все малы</h3>
+		<ul id="list">
+
+
+		</ul>
+	</div>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+	<script type="text/javascript">
+		let input = document.getElementById('mal');
+		let res = document.getElementById('res');
+		let list = document.getElementById('list');
+		let listno = document.getElementById('listno');
+		let hisItem = document.getElementById('history');
+		let hisMAl = document.getElementById('btn');
+		input.addEventListener('change', function () {
+			let random = Math.random();
+			if (this.value === "") {
+				res.innerHTML = '<h4 style="color:white"; >Введите имя</h4>';
+			} else {
+				if (random < 0.5) {
+					res.innerHTML = '<h4 style="color:white;">Вы мал</h4>';
+					var newLi = document.createElement('li');
+					newLi.innerHTML = this.value + ' ' + 'мал';
+					newLi.classList.add('listItem');
+					list.appendChild(newLi);
+
+				} else if (random > 0.5) {
+					res.innerHTML = '<h4 style="color:white"> Вы не мал</h4>';
+					var newLi2 = document.createElement('li');
+					newLi2.innerHTML = this.value + ' ' + ' не мал';
+					newLi2.classList.add('listItem');
+					listno.appendChild(newLi2);
+				}
+			}
+		});
+		hisMAl.addEventListener('click', function (event) {
+			event.preventDefault();
+			$('#history').slideToggle(1500);
+		});
+	</script>
+</body>
+
+</html>
